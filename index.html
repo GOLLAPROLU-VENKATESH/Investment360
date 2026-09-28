@@ -1,0 +1,1617 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Investment plan 2026–2030</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f2f4f0;
+        --surface: #fbfcfa;
+        --ink: #18231e;
+        --muted: #5c6b63;
+        --line: #d5dbd3;
+        --accent: #0e5a4b;
+        --rail: #dde3db;
+        --over: #c0356b;
+        --need: #a4432f;
+        --cat-equity: #2f6fde;
+        --cat-debt: #7a5ac8;
+        --cat-commodity: #d49a12;
+        --cat-reit: #de6b33;
+        --cat-bond: #1f9c8c;
+        --cat-emergency-fund: #6f8279;
+        --cat-other: #8a948e;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #101714;
+          --surface: #161f1b;
+          --ink: #e7eee9;
+          --muted: #93a399;
+          --line: #27332d;
+          --accent: #4fc0a4;
+          --rail: #26332d;
+          --over: #f07aa5;
+          --need: #e58a76;
+          --cat-equity: #6c9cff;
+          --cat-debt: #a98cf0;
+          --cat-commodity: #edbb3e;
+          --cat-reit: #ff9160;
+          --cat-bond: #4dd0be;
+          --cat-emergency-fund: #9db0a6;
+          --cat-other: #a3ada7;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #101714;
+        --surface: #161f1b;
+        --ink: #e7eee9;
+        --muted: #93a399;
+        --line: #27332d;
+        --accent: #4fc0a4;
+        --rail: #26332d;
+        --over: #f07aa5;
+        --need: #e58a76;
+        --cat-equity: #6c9cff;
+        --cat-debt: #a98cf0;
+        --cat-commodity: #edbb3e;
+        --cat-reit: #ff9160;
+        --cat-bond: #4dd0be;
+        --cat-emergency-fund: #9db0a6;
+        --cat-other: #a3ada7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          400 16px/1.5 Figtree,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        font-variant-numeric: tabular-nums;
+      }
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: calc(40px + env(safe-area-inset-top, 0px)) 20px
+          calc(64px + env(safe-area-inset-bottom, 0px));
+      }
+      h1 {
+        font:
+          700 clamp(1.7rem, 4vw, 2.4rem)/1.1 "Bricolage Grotesque",
+          Figtree,
+          sans-serif;
+        margin: 0 0 6px;
+        letter-spacing: -0.02em;
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 6px;
+      }
+      .status {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0 0 28px;
+      }
+      .status.bad {
+        color: var(--need);
+      }
+      .summary {
+        font:
+          500 clamp(1.25rem, 3vw, 1.75rem)/1.35 "Bricolage Grotesque",
+          Figtree,
+          sans-serif;
+        margin: 0 0 20px;
+        max-width: 34em;
+      }
+      .summary b {
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .summary .need {
+        color: var(--need);
+      }
+      .master {
+        height: 16px;
+        border-radius: 8px;
+        background: var(--rail);
+        overflow: hidden;
+        margin-bottom: 10px;
+        display: flex;
+        gap: 2px;
+      }
+      .master i {
+        display: block;
+        height: 100%;
+      }
+      .ctl {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 36px;
+      }
+      input {
+        font: inherit;
+        color: var(--ink);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 6px 8px;
+        width: 64px;
+      }
+      input:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      button {
+        font: inherit;
+        color: var(--ink);
+        background: none;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      h2 {
+        font:
+          700 1.15rem/1.2 "Bricolage Grotesque",
+          Figtree,
+          sans-serif;
+        margin: 40px 0 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(150px, 1.5fr) repeat(4, minmax(0, 1fr));
+        gap: 4px 16px;
+        align-items: center;
+      }
+      .head {
+        color: var(--muted);
+        font-size: 0.85rem;
+        padding: 0 14px 6px;
+      }
+      .head,
+      .row {
+        grid-column: 1/-1;
+        display: grid;
+        grid-template-columns: subgrid;
+      }
+      .row {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        row-gap: 10px;
+      }
+      .name b {
+        display: block;
+        font-weight: 600;
+      }
+      .name span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .n {
+        text-align: right;
+      }
+      .rail {
+        grid-column: 1/-1;
+        height: 8px;
+        border-radius: 4px;
+        background: var(--rail);
+        overflow: hidden;
+      }
+      .rail i {
+        display: block;
+        height: 100%;
+        background: var(--accent);
+      }
+      .rail.over i {
+        background: var(--over);
+      }
+      .done {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .over-t {
+        color: var(--over);
+        font-weight: 600;
+      }
+      .left {
+        color: var(--need);
+        font-weight: 600;
+      }
+      .cat {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .cat th,
+      .cat td {
+        padding: 10px 8px;
+        border-bottom: 1px solid var(--line);
+        text-align: right;
+      }
+      .cat th:first-child,
+      .cat td:first-child {
+        text-align: left;
+      }
+      .cat th {
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 0.85rem;
+      }
+      .share {
+        display: inline-block;
+        height: 8px;
+        border-radius: 4px;
+        vertical-align: middle;
+        margin-left: 8px;
+        opacity: 0.75;
+      }
+      details {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 16px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      details ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      details li {
+        margin-bottom: 6px;
+      }
+
+      .dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin-right: 7px;
+      }
+      .charts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .panel h3 {
+        font:
+          600 1rem/1.2 "Bricolage Grotesque",
+          Figtree,
+          sans-serif;
+        margin: 0;
+      }
+      .ph {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .seg {
+        display: flex;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .seg button {
+        border: 0;
+        border-radius: 0;
+        padding: 4px 12px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .seg button[aria-pressed="true"] {
+        background: var(--accent);
+        color: var(--surface);
+      }
+      .donut {
+        display: block;
+        width: 190px;
+        max-width: 70%;
+        margin: 0 auto 12px;
+      }
+      .chart {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .legend {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0.9rem;
+      }
+      .legend li {
+        display: flex;
+        align-items: center;
+        padding: 3px 0;
+      }
+      .legend li em {
+        margin-left: auto;
+        font-style: normal;
+        color: var(--muted);
+      }
+      .note {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin: 12px 0 0;
+      }
+      .hb {
+        display: grid;
+        grid-template-columns: 130px 1fr 170px;
+        gap: 12px;
+        align-items: center;
+        padding: 6px 0;
+      }
+      .hb .lab {
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+      }
+      .hb .val {
+        text-align: right;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .track {
+        position: relative;
+        height: 16px;
+      }
+      .track b {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        border-radius: 4px;
+      }
+      .track .goal {
+        background: var(--rail);
+      }
+      .track .ov {
+        background: var(--over);
+      }
+      .tabs {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        margin: 14px 0 12px;
+        padding-bottom: 2px;
+      }
+      .tabs button {
+        border-radius: 999px;
+        padding: 6px 14px;
+        white-space: nowrap;
+        color: var(--muted);
+      }
+      .tabs button[aria-selected="true"] {
+        background: var(--accent);
+        color: var(--surface);
+        border-color: var(--accent);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        margin: 0 0 10px;
+        font-size: 0.9rem;
+      }
+      .chips span {
+        display: inline-flex;
+        align-items: center;
+      }
+      a {
+        color: var(--accent);
+      }
+      .dbg {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 16px;
+        margin: 10px 0 24px;
+        font-size: 0.85rem;
+      }
+      .dbg summary {
+        font-weight: 500;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .dbg table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 0.8rem;
+      }
+      .dbg td {
+        border: 1px solid var(--line);
+        padding: 3px 6px;
+        white-space: nowrap;
+        color: var(--ink);
+      }
+      .dbg td.hit {
+        background: var(--accent);
+        color: var(--surface);
+        font-weight: 600;
+      }
+      .dbg .row-i {
+        color: var(--muted);
+        text-align: right;
+      }
+      .dbg p {
+        color: var(--muted);
+        margin: 8px 0 0;
+      }
+      .foot {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-top: 28px;
+      }
+      @media (max-width: 680px) {
+        main {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .head {
+          display: none;
+        }
+        .row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .name {
+          grid-column: 1/-1;
+        }
+        .n {
+          text-align: left;
+        }
+        .n::before {
+          content: attr(data-l);
+          display: block;
+          color: var(--muted);
+          font-size: 0.8rem;
+        }
+        .cat th,
+        .cat td {
+          padding: 8px 4px;
+          font-size: 0.9rem;
+        }
+        .share {
+          display: none;
+        }
+        .charts {
+          grid-template-columns: 1fr;
+        }
+        .hb {
+          grid-template-columns: 1fr auto;
+          row-gap: 4px;
+        }
+        .hb .track {
+          grid-column: 1/-1;
+          order: 3;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Investment plan 2026–2030</h1>
+      <p class="sub">
+        Read live from your Google Sheet. Change the sheet and this page
+        follows.
+      </p>
+
+      <nav class="tabs" id="tabs" aria-label="Plan year"></nav>
+      <p class="status" id="status" role="status">Loading…</p>
+
+      <details id="dbg" class="dbg">
+        <summary>
+          Troubleshooting: show what the page received from Google
+        </summary>
+        <div id="dbgbody"></div>
+      </details>
+
+      <p class="summary" id="summary"></p>
+      <div
+        class="master"
+        id="master"
+        aria-label="Funded share by category"
+      ></div>
+      <div class="ctl" id="ctl" hidden>
+        <label
+          >Months left
+          <input
+            id="months"
+            type="number"
+            min="1"
+            step="1"
+            inputmode="numeric" /></label
+        ><span id="mnote"></span>
+        <button id="usesheet" type="button" hidden>
+          Use the sheet's value
+        </button>
+        <button id="refresh" type="button">Refresh now</button>
+      </div>
+
+      <div id="body" hidden>
+        <h2>Where the plan stands</h2>
+        <div class="charts">
+          <section class="panel">
+            <div class="ph">
+              <h3>Plan by category</h3>
+              <div class="seg" role="group" aria-label="Show goal or invested">
+                <button type="button" data-mode="g" aria-pressed="true">
+                  Goal</button
+                ><button type="button" data-mode="i" aria-pressed="false">
+                  Invested
+                </button>
+              </div>
+            </div>
+            <div id="donut"></div>
+          </section>
+          <section class="panel">
+            <div class="ph"><h3>Invested vs goal by category</h3></div>
+            <div id="catbars"></div>
+          </section>
+        </div>
+        <h2>Invested vs goal, by instrument</h2>
+        <section class="panel"><div id="hbars"></div></section>
+        <h2>Monthly SIP needed</h2>
+        <section class="panel"><div id="sipbars"></div></section>
+        <h2>Instruments, by priority</h2>
+        <div class="grid" id="grid"></div>
+        <h2>By category</h2>
+        <table class="cat" id="cat"></table>
+        <h2>Where this differs from your sheet</h2>
+        <details>
+          <summary>Checks against the sheet's own totals</summary>
+          <ul id="diff"></ul>
+        </details>
+      </div>
+
+      <div id="allbody" hidden>
+        <h2>Year by year</h2>
+        <section class="panel"><div id="yearbars"></div></section>
+        <h2>Where each year's goal goes</h2>
+        <section class="panel"><div id="yearstack"></div></section>
+        <h2>Totals by year</h2>
+        <table class="cat" id="yeartbl"></table>
+      </div>
+
+      <p class="foot">
+        Amounts in ₹. Monthly SIP = left to invest ÷ months left.
+      </p>
+    </main>
+    <script>
+      /* ---- Settings ---- */
+      const SHEET_ID = "1ZcGeBVVwDfk6HzAXQbhYYYmKLDvScOfrWdx79lf7FNY";
+      const YEARS = [2026, 2027, 2028, 2029, 2030];
+      /* Optional: if a year's tab isn't named "360 Overview <year>", put its gid here (the number after gid= in that tab's address). */
+      const TAB_GIDS = { 2026: "", 2027: "", 2028: "", 2029: "", 2030: "" };
+      /* Optional: force "months left" for a year instead of reading it from the sheet. Example: {2026:3} */
+      const MONTHS_OVERRIDE = { 2026: 3 };
+      const REFRESH_SECONDS = 60;
+      /* ------------------------------------------------------------------------- */
+      const tabQS = (y) =>
+        TAB_GIDS[y]
+          ? "&gid=" + encodeURIComponent(TAB_GIDS[y])
+          : y === YEARS[0]
+            ? ""
+            : "&sheet=" + encodeURIComponent("360 Overview " + y);
+      const gvizUrl = (y) =>
+        "https://docs.google.com/spreadsheets/d/" +
+        SHEET_ID +
+        "/gviz/tq?headers=1" +
+        tabQS(y);
+      const NAMES = {
+        "emergnecy fund": "Emergency fund",
+        "mutual fund": "Mutual funds",
+        "us stocks": "US stocks",
+        "commodi gold": "Gold",
+        "commodi silver": "Silver",
+      };
+      const clean = (n) => NAMES[n.toLowerCase()] || n;
+      const inr = (n) => Math.round(n).toLocaleString("en-IN");
+      const L = (n) => {
+        const a = Math.abs(n);
+        return a >= 1e5
+          ? "₹" + (n / 1e5).toFixed(2).replace(/\.?0+$/, "") + "L"
+          : "₹" + inr(n);
+      };
+      const toNum = (x) => {
+        const v = parseFloat(
+          String(x == null ? "" : x).replace(/[₹,\s%]/g, ""),
+        );
+        return isNaN(v) ? null : v;
+      };
+      const el = (t, c, x) => {
+        const e = document.createElement(t);
+        if (c) e.className = c;
+        if (x !== undefined) e.textContent = x;
+        return e;
+      };
+      const $ = (id) => document.getElementById(id);
+
+      function parseCSV(t) {
+        const rows = [];
+        let r = [],
+          f = "",
+          q = false;
+        for (let i = 0; i < t.length; i++) {
+          const c = t[i];
+          if (q) {
+            if (c === '"') {
+              if (t[i + 1] === '"') {
+                f += '"';
+                i++;
+              } else q = false;
+            } else f += c;
+          } else if (c === '"') q = true;
+          else if (c === ",") {
+            r.push(f);
+            f = "";
+          } else if (c === "\n") {
+            r.push(f);
+            rows.push(r);
+            r = [];
+            f = "";
+          } else if (c !== "\r") f += c;
+        }
+        r.push(f);
+        rows.push(r);
+        return rows;
+      }
+
+      function parseSheet(input) {
+        const rows = (Array.isArray(input) ? input : parseCSV(input))
+          .map((r) => r.map((c) => (c == null ? "" : String(c))))
+          .filter((r) => r.some((c) => c.trim()));
+        if (!rows.length) throw new Error("empty");
+        const head = rows[0].map((h) => h.trim().toLowerCase());
+        const idx = (re) => head.findIndex((h) => re.test(h));
+        const iC = idx(/^category/),
+          iG = idx(/goal/),
+          iI = idx(/invested/),
+          iP = idx(/^pr/),
+          iR = idx(/rem/),
+          iS = idx(/per month/);
+        if (iG < 0 || iI < 0) throw new Error("expected columns not found");
+        const items = [];
+        let sums = null,
+          months = null;
+        rows.slice(1).forEach((r) => {
+          const name = (r[0] || "").trim();
+          const mi = r.findIndex((c) => /months\s*left/i.test(c || ""));
+          if (mi >= 0) {
+            const v = r
+              .slice(mi + 1)
+              .map(toNum)
+              .find((v) => v !== null);
+            if (v != null) months = v;
+            return;
+          }
+          if (/^sum with ef/i.test(name)) {
+            sums = { g: toNum(r[iG]), rem: toNum(r[iR]), sip: toNum(r[iS]) };
+            return;
+          }
+          if (!name || /^sum/i.test(name)) return;
+          const g = toNum(r[iG]);
+          if (g === null || g <= 0) return;
+          let c = (r[iC] || "").trim() || "Other";
+          if (/^emergency/i.test(c)) c = "Emergency fund";
+          items.push({
+            n: clean(name),
+            c,
+            p: toNum(r[iP]) || 99,
+            g,
+            i: toNum(r[iI]) || 0,
+          });
+        });
+        if (!items.length) throw new Error("no instrument rows found");
+        return { items, sums, months: months || 12, assumed: months == null };
+      }
+
+      /* Loads the sheet as a script tag, which works from any page (including a file opened from disk) */
+      function fromScript(base) {
+        return new Promise((res, rej) => {
+          const s = document.createElement("script");
+          const done = () => {
+            clearTimeout(to);
+            s.remove();
+          };
+          const to = setTimeout(() => {
+            done();
+            rej(new Error("timed out"));
+          }, 12000);
+          window.google = window.google || {};
+          google.visualization = google.visualization || {};
+          google.visualization.Query = google.visualization.Query || {};
+          google.visualization.Query.setResponse = (r) => {
+            done();
+            if (r.status !== "ok") {
+              rej(
+                new Error(
+                  (r.errors && r.errors[0] && r.errors[0].reason) || r.status,
+                ),
+              );
+              return;
+            }
+            const t = r.table;
+            const cell = (v) =>
+              v ? (v.v != null ? v.v : v.f != null ? v.f : "") : "";
+            res(
+              [t.cols.map((c) => c.label || "")].concat(
+                t.rows.map((x) => (x.c || []).map(cell)),
+              ),
+            );
+          };
+          s.onerror = () => {
+            done();
+            rej(new Error("not reachable or not shared"));
+          };
+          s.src = base + "&tqx=out:json&_=" + Date.now();
+          document.head.append(s);
+        });
+      }
+      const sourcesFor = (y) => {
+        const u = gvizUrl(y);
+        return [
+          ["Google Sheets", () => fromScript(u)],
+          ["Google Sheets (CSV)", () => get(u + "&tqx=out:csv")],
+        ];
+      };
+
+      let data = null,
+        src = "",
+        stamp = null,
+        userMonths = null,
+        failed = false;
+
+      const SVGNS = "http://www.w3.org/2000/svg";
+      const svg = (t, a) => {
+        const e = document.createElementNS(SVGNS, t);
+        for (const k in a) e.setAttribute(k, a[k]);
+        return e;
+      };
+      const slug = (c) => c.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      const cc = (c) => "var(--cat-" + slug(c) + ",var(--cat-other))";
+      const dot = (c) => {
+        const d = el("i", "dot");
+        d.style.background = cc(c);
+        return d;
+      };
+      let donutMode = "g";
+
+      function drawDonut(catList, G, I) {
+        const box = $("donut");
+        box.replaceChildren();
+        const tot = donutMode === "g" ? G : I,
+          R = 70,
+          C = 2 * Math.PI * R;
+        let off = 0;
+        const s = svg("svg", {
+          viewBox: "0 0 200 200",
+          role: "img",
+          "aria-label": "Share of the plan by category",
+        });
+        s.setAttribute("class", "donut");
+        s.append(
+          svg("circle", {
+            cx: 100,
+            cy: 100,
+            r: R,
+            fill: "none",
+            "stroke-width": 26,
+            style: "stroke:var(--rail)",
+          }),
+        );
+        catList.forEach(([k, c]) => {
+          const v = donutMode === "g" ? c.g : c.i;
+          if (v <= 0 || tot <= 0) return;
+          const len = (v / tot) * C,
+            gap = catList.length > 1 ? Math.min(2, len * 0.2) : 0;
+          const ci = svg("circle", {
+            cx: 100,
+            cy: 100,
+            r: R,
+            fill: "none",
+            "stroke-width": 26,
+            "stroke-dasharray": len - gap + " " + (C - len + gap),
+            "stroke-dashoffset": -off,
+            transform: "rotate(-90 100 100)",
+            style: "stroke:" + cc(k),
+          });
+          const t = svg("title", {});
+          t.textContent =
+            k + ": " + L(v) + " (" + ((v / tot) * 100).toFixed(0) + "%)";
+          ci.append(t);
+          s.append(ci);
+          off += len;
+        });
+        const t1 = svg("text", {
+          x: 100,
+          y: 100,
+          "text-anchor": "middle",
+          "font-size": 22,
+          "font-weight": 700,
+          style: "fill:var(--ink)",
+        });
+        t1.textContent = L(tot);
+        const t2 = svg("text", {
+          x: 100,
+          y: 120,
+          "text-anchor": "middle",
+          "font-size": 11,
+          style: "fill:var(--muted)",
+        });
+        t2.textContent = donutMode === "g" ? "planned" : "invested";
+        s.append(t1, t2);
+        box.append(s);
+        const ul = el("ul", "legend");
+        catList.forEach(([k, c]) => {
+          const v = donutMode === "g" ? c.g : c.i;
+          const li = el("li");
+          li.append(
+            dot(k),
+            el("span", "", k),
+            el(
+              "em",
+              "",
+              L(v) + " · " + (tot ? ((v / tot) * 100).toFixed(0) : 0) + "%",
+            ),
+          );
+          ul.append(li);
+        });
+        box.append(ul);
+      }
+
+      function drawCatBars(catList, id, colorFor, note, aria) {
+        id = id || "catbars";
+        colorFor = colorFor || cc;
+        note =
+          note ||
+          "Grey bar is the goal. The coloured bar beside it is what you've invested.";
+        const box = $(id);
+        box.replaceChildren();
+        const W = 360,
+          H = 230,
+          pl = 40,
+          pb = 30,
+          pt = 10,
+          pr = 6,
+          ih = H - pt - pb;
+        const max = Math.max(1, ...catList.map(([k, c]) => Math.max(c.g, c.i))),
+          top = Math.ceil(max / 1e5) * 1e5;
+        const y = (v) => pt + ih - (v / top) * ih;
+        const s = svg("svg", {
+          viewBox: "0 0 " + W + " " + H,
+          role: "img",
+          "aria-label": aria || "Invested and goal by category",
+        });
+        s.setAttribute("class", "chart");
+        for (let i = 0; i <= 4; i++) {
+          const v = (top * i) / 4;
+          s.append(
+            svg("line", {
+              x1: pl,
+              x2: W - pr,
+              y1: y(v),
+              y2: y(v),
+              style: "stroke:var(--line)",
+              "stroke-width": 1,
+            }),
+          );
+          const t = svg("text", {
+            x: pl - 5,
+            y: y(v) + 3,
+            "text-anchor": "end",
+            "font-size": 9,
+            style: "fill:var(--muted)",
+          });
+          t.textContent = L(v);
+          s.append(t);
+        }
+        const gw = (W - pl - pr) / catList.length,
+          bw = Math.min(18, gw * 0.32);
+        catList.forEach(([k, c], gi) => {
+          const x0 = pl + gi * gw + gw / 2;
+          const goal = svg("rect", {
+            x: x0 - bw - 1,
+            y: y(c.g),
+            width: bw,
+            height: Math.max(0, pt + ih - y(c.g)),
+            rx: 2,
+            style: "fill:var(--rail);stroke:var(--line)",
+          });
+          const gt = svg("title", {});
+          gt.textContent = k + " goal: " + L(c.g);
+          goal.append(gt);
+          const inv = svg("rect", {
+            x: x0 + 1,
+            y: y(c.i),
+            width: bw,
+            height: Math.max(0, pt + ih - y(c.i)),
+            rx: 2,
+            style: "fill:" + colorFor(k),
+          });
+          const it = svg("title", {});
+          it.textContent = k + " invested: " + L(c.i);
+          inv.append(it);
+          const lb = svg("text", {
+            x: x0,
+            y: H - pb + 15,
+            "text-anchor": "middle",
+            "font-size": 10,
+            style: "fill:var(--muted)",
+          });
+          lb.textContent = k.split(" ")[0];
+          s.append(goal, inv, lb);
+        });
+        box.append(s, el("p", "note", note));
+      }
+
+      function drawHBars(rows) {
+        const box = $("hbars");
+        box.replaceChildren();
+        const scale = Math.max(1, ...rows.map((r) => Math.max(r.g, r.i)));
+        rows.forEach((r) => {
+          const line = el("div", "hb"),
+            lab = el("div", "lab");
+          lab.append(dot(r.c), document.createTextNode(r.n));
+          const tr = el("div", "track"),
+            seg = (cls, left, w, bg) => {
+              const b = el("b", cls);
+              b.style.left = left + "%";
+              b.style.width = w + "%";
+              if (bg) b.style.background = bg;
+              tr.append(b);
+            };
+          const gp = (r.g / scale) * 100;
+          seg("goal", 0, gp);
+          seg("fill", 0, (Math.min(r.i, r.g) / scale) * 100, cc(r.c));
+          if (r.over > 0) seg("ov", gp, (r.over / scale) * 100);
+          const pct = Math.round((r.i / r.g) * 100);
+          const val = el("div", "val", pct + "% · " + L(r.i) + " of " + L(r.g));
+          line.append(lab, tr, val);
+          box.append(line);
+        });
+        box.append(
+          el(
+            "p",
+            "note",
+            "Grey is the goal, colour is invested, pink is invested beyond the goal.",
+          ),
+        );
+      }
+
+      function drawSip(rows) {
+        const box = $("sipbars");
+        box.replaceChildren();
+        const list = rows
+          .filter((r) => r.rem > 0)
+          .sort((a, b) => b.sip - a.sip);
+        if (!list.length) {
+          box.append(el("p", "note", "Nothing left to invest."));
+          return;
+        }
+        const max = list[0].sip;
+        list.forEach((r) => {
+          const line = el("div", "hb"),
+            lab = el("div", "lab");
+          lab.append(dot(r.c), document.createTextNode(r.n));
+          const tr = el("div", "track"),
+            b = el("b", "fill");
+          b.style.left = "0";
+          b.style.width = (r.sip / max) * 100 + "%";
+          b.style.background = cc(r.c);
+          tr.append(b);
+          line.append(lab, tr, el("div", "val", "₹" + inr(r.sip) + " a month"));
+          box.append(line);
+        });
+      }
+
+      function renderDebug(y) {
+        const box = $("dbgbody"),
+          info = lastRaw[y];
+        box.replaceChildren();
+        if (!info) {
+          box.append(el("p", "", "Nothing fetched yet for this tab."));
+          return;
+        }
+        box.append(
+          el(
+            "p",
+            "",
+            "Source that answered: " +
+              info.label +
+              ". Total rows received: " +
+              info.raw.length +
+              ".",
+          ),
+        );
+        const hits = [];
+        info.raw.forEach((r, ri) =>
+          r.forEach((c, ci) => {
+            if (/month/i.test(String(c || ""))) hits.push([ri, ci, c]);
+          }),
+        );
+        box.append(
+          el(
+            "p",
+            "",
+            hits.length
+              ? 'Cells containing the word "month":'
+              : 'No cell in this tab contains the word "month" at all -- the label may be phrased differently, or this source isn\'t returning that row.',
+          ),
+        );
+        if (hits.length) {
+          const t = el("table");
+          hits.forEach(([ri, ci, c]) => {
+            const tr = el("tr");
+            tr.append(
+              el("td", "row-i", "row " + (ri + 1)),
+              el("td", "row-i", "col " + (ci + 1)),
+            );
+            const near = info.raw[ri]
+              .slice(ci, ci + 4)
+              .map((x) => String(x == null ? "" : x));
+            near.forEach((x, i) =>
+              tr.append(el("td", i === 0 ? "hit" : "", x || "(empty)")),
+            );
+            t.append(tr);
+          });
+          box.append(t);
+        }
+      }
+
+      function render() {
+        if (!data) return;
+        renderDebug(view());
+        const sheetM = Math.max(1, data.months | 0),
+          m = userMonths !== null ? userMonths : sheetM;
+        const rows = data.items.map((d) => ({
+          ...d,
+          rem: Math.max(d.g - d.i, 0),
+          over: Math.max(d.i - d.g, 0),
+          sip: Math.max(d.g - d.i, 0) / m,
+        }));
+        const G = rows.reduce((a, r) => a + r.g, 0),
+          I = rows.reduce((a, r) => a + r.i, 0),
+          R = rows.reduce((a, r) => a + r.rem, 0);
+        const S = R / m,
+          done = G
+            ? (rows.reduce((a, r) => a + Math.min(r.i, r.g), 0) / G) * 100
+            : 0;
+        const sorted = [...rows].sort((a, b) => a.p - b.p);
+
+        const sm = $("summary");
+        sm.replaceChildren();
+        const add = (t, k) =>
+          sm.append(
+            k ? el("b", k === "need" ? "need" : "", t) : el("span", "", t),
+          );
+        add(L(I), "b");
+        add(" invested of ");
+        add(L(G));
+        add(" planned (" + done.toFixed(0) + "% funded). ");
+        if (R > 0) {
+          add(L(R), "need");
+          add(
+            " is still to go over " +
+              m +
+              " month" +
+              (m > 1 ? "s" : "") +
+              ", about ",
+          );
+          add(L(S), "b");
+          add(" a month.");
+        } else add("Every instrument has reached its goal.");
+
+        const cats = {};
+        sorted.forEach((r) => {
+          const c =
+            cats[r.c] || (cats[r.c] = { g: 0, i: 0, cap: 0, rem: 0, sip: 0 });
+          c.g += r.g;
+          c.i += r.i;
+          c.cap += Math.min(r.i, r.g);
+          c.rem += r.rem;
+          c.sip += r.sip;
+        });
+        const catList = Object.entries(cats);
+        const ms = $("master");
+        ms.replaceChildren();
+        catList.forEach(([k, c]) => {
+          const i = el("i");
+          i.style.width = (G ? (c.cap / G) * 100 : 0) + "%";
+          i.style.background = cc(k);
+          i.title = k + ": " + L(c.cap) + " invested";
+          ms.append(i);
+        });
+        $("months").value = m;
+        $("mnote").textContent = data.assumed
+          ? "(not found in this tab, assumed)"
+          : "";
+        $("usesheet").hidden = userMonths === null || userMonths === sheetM;
+        $("ctl").hidden = false;
+        $("body").hidden = false;
+
+        drawDonut(catList, G, I);
+        drawCatBars(catList);
+        drawHBars(sorted);
+        drawSip(rows);
+
+        const g = $("grid");
+        g.replaceChildren();
+        const h = el("div", "head");
+        h.append(el("span", "", "Instrument"));
+        ["Goal", "Invested", "Left to invest", "SIP per month"].forEach((t) =>
+          h.append(el("span", "n", t)),
+        );
+        g.append(h);
+        sorted.forEach((r) => {
+          const row = el("div", "row"),
+            nm = el("div", "name");
+          row.style.borderLeft = "4px solid " + cc(r.c);
+          const sub = el("span");
+          sub.append(
+            dot(r.c),
+            document.createTextNode(
+              r.c + (r.p < 99 ? " · priority " + r.p : ""),
+            ),
+          );
+          nm.append(el("b", "", r.n), sub);
+          row.append(nm);
+          const goal = el("div", "n", inr(r.g));
+          goal.dataset.l = "Goal";
+          const ic = el("div", "n", inr(r.i));
+          ic.dataset.l = "Invested";
+          const lf = el("div", "n");
+          lf.dataset.l = "Left to invest";
+          if (r.over > 0) {
+            lf.classList.add("over-t");
+            lf.textContent = "Over by " + inr(r.over);
+          } else if (r.rem === 0) {
+            lf.classList.add("done");
+            lf.textContent = "Complete";
+          } else {
+            lf.classList.add("left");
+            lf.textContent = inr(r.rem);
+          }
+          const sp = el("div", "n", r.rem > 0 ? inr(r.sip) : "–");
+          sp.dataset.l = "SIP per month";
+          const rail = el("div", "rail" + (r.over > 0 ? " over" : "")),
+            f = el("i");
+          f.style.width = Math.min((r.i / r.g) * 100, 100) + "%";
+          if (!r.over) f.style.background = cc(r.c);
+          rail.append(f);
+          row.append(goal, ic, lf, sp, rail);
+          g.append(row);
+        });
+
+        const t = $("cat");
+        t.replaceChildren();
+        const hr = el("tr");
+        ["Category", "Goal", "Invested", "Left", "SIP per month"].forEach((x) =>
+          hr.append(el("th", "", x)),
+        );
+        t.append(hr);
+        catList.forEach(([k, c]) => {
+          const tr = el("tr"),
+            td = el("td");
+          td.append(dot(k), document.createTextNode(k));
+          const sh = el("span", "share");
+          sh.style.width = (c.g / G) * 80 + "px";
+          sh.style.background = cc(k);
+          sh.title = ((c.g / G) * 100).toFixed(0) + "% of plan";
+          td.append(sh);
+          tr.append(td);
+          [c.g, c.i, c.rem, c.sip].forEach((v) =>
+            tr.append(el("td", "", v > 0 ? inr(v) : "–")),
+          );
+          t.append(tr);
+        });
+
+        const dl = $("diff");
+        dl.replaceChildren();
+        const notes = [],
+          s = data.sums,
+          sheetS = R / sheetM;
+        if (s) {
+          if (s.g != null && Math.abs(s.g - G) > 1)
+            notes.push(
+              "Goal total: the sheet shows ₹" +
+                inr(s.g) +
+                ", but its rows add up to ₹" +
+                inr(G) +
+                ".",
+            );
+          if (s.rem != null && Math.abs(s.rem - R) > 1)
+            notes.push(
+              "Left to invest: the sheet shows ₹" +
+                inr(s.rem) +
+                ", but its rows add up to ₹" +
+                inr(R) +
+                ".",
+            );
+          if (s.sip != null && Math.abs(s.sip - sheetS) > 1)
+            notes.push(
+              "Monthly SIP: the sheet shows ₹" +
+                inr(s.sip) +
+                ", but its rows add up to ₹" +
+                inr(sheetS) +
+                " at " +
+                sheetM +
+                " months left.",
+            );
+        }
+        rows
+          .filter((r) => r.over > 0)
+          .forEach((r) =>
+            notes.push(
+              r.n +
+                ": ₹" +
+                inr(r.i) +
+                " invested against a ₹" +
+                inr(r.g) +
+                " goal, so it is ₹" +
+                inr(r.over) +
+                " over. The overage isn't subtracted from other rows.",
+            ),
+          );
+        if (!notes.length) notes.push("The sheet's totals match its rows.");
+        notes.forEach((x) => dl.append(el("li", "", x)));
+        status();
+      }
+
+      document.querySelectorAll(".seg button").forEach((b) =>
+        b.addEventListener("click", () => {
+          donutMode = b.dataset.mode;
+          document
+            .querySelectorAll(".seg button")
+            .forEach((x) =>
+              x.setAttribute("aria-pressed", x === b ? "true" : "false"),
+            );
+          render();
+        }),
+      );
+
+      function status(msg, bad) {
+        const s = $("status");
+        s.className = "status" + (bad ? " bad" : "");
+        if (msg) {
+          s.textContent = msg;
+          return;
+        }
+        if (!stamp) return;
+        const tm = stamp.toLocaleTimeString("en-IN", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        s.textContent = failed
+          ? "Couldn't refresh. Showing data from " + tm + "."
+          : "Live from " + src + " · updated " + tm;
+        if (failed) s.className = "status bad";
+      }
+
+      async function get(url) {
+        const r = await fetch(
+          url + (url.includes("?") ? "&" : "?") + "_=" + Date.now(),
+          { cache: "no-store" },
+        );
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      }
+      let seq = 0,
+        chain = Promise.resolve();
+      const cache = {};
+      const view = () => {
+        const h = location.hash.slice(1);
+        return h === "all" || YEARS.map(String).includes(h)
+          ? h
+          : String(YEARS[0]);
+      };
+
+      const lastRaw = {};
+      async function fetchYear(y) {
+        const errs = [];
+        for (const [label, fn] of sourcesFor(y)) {
+          try {
+            const raw = await fn();
+            lastRaw[y] = { label, raw };
+            return { data: parseSheet(raw), src: label };
+          } catch (e) {
+            errs.push(label + " (" + e.message + ")");
+          }
+        }
+        throw new Error(errs.join(", "));
+      }
+      const failMsg = (y, e) =>
+        "Couldn't load the " +
+        y +
+        " tab. Tried " +
+        e +
+        ". " +
+        (TAB_GIDS[y] || y === YEARS[0]
+          ? "Check the sheet is shared as “Anyone with the link can view”."
+          : "The page looks for a tab named “360 Overview " +
+            y +
+            "”. If it has a different name, put that tab's gid (the number after gid= in its address) in TAB_GIDS at the top of the script.") +
+        " If you opened this file by double-clicking it, host it on GitHub Pages instead.";
+
+      function showView(v) {
+        const all = v === "all",
+          has = !!cache[v];
+        $("body").hidden = all || !has;
+        $("allbody").hidden = !all;
+        $("ctl").hidden = all || !has;
+        $("master").hidden = all;
+        document
+          .querySelectorAll("#tabs button")
+          .forEach((b) =>
+            b.setAttribute("aria-selected", String(b.dataset.v === v)),
+          );
+      }
+
+      function load() {
+        return (chain = chain.then(doLoad, doLoad));
+      }
+      async function doLoad() {
+        const v = view(),
+          my = ++seq;
+        showView(v);
+        if (v === "all") {
+          await loadAll(my);
+          return;
+        }
+        status("Loading…");
+        try {
+          const r = await fetchYear(+v);
+          if (my !== seq) return;
+          if (MONTHS_OVERRIDE[+v] != null) {
+            r.data.months = MONTHS_OVERRIDE[+v];
+            r.data.assumed = false;
+          }
+          cache[v] = { data: r.data, src: r.src, stamp: new Date() };
+          failed = false;
+          data = r.data;
+          src = r.src;
+          stamp = cache[v].stamp;
+          showView(v);
+          render();
+        } catch (e) {
+          if (my !== seq) return;
+          if (cache[v]) {
+            data = cache[v].data;
+            src = cache[v].src;
+            stamp = cache[v].stamp;
+            failed = true;
+            showView(v);
+            render();
+          } else {
+            $("summary").textContent = "The " + v + " tab couldn't be loaded.";
+            $("master").replaceChildren();
+            renderDebug(v);
+            status(failMsg(v, e.message), true);
+          }
+        }
+      }
+
+      async function loadAll(my) {
+        status("Loading all years…");
+        for (const y of YEARS) {
+          try {
+            const r = await fetchYear(y);
+            if (my !== seq) return;
+            cache[y] = { data: r.data, src: r.src, stamp: new Date() };
+          } catch (e) {
+            if (my !== seq) return;
+          }
+        }
+        stamp = new Date();
+        failed = false;
+        renderAll();
+      }
+
+      function yearStats(y) {
+        const c = cache[y];
+        if (!c) return null;
+        const m = Math.max(1, c.data.months | 0),
+          rows = c.data.items,
+          cats = {};
+        let G = 0,
+          I = 0,
+          R = 0,
+          cap = 0;
+        rows.forEach((r) => {
+          G += r.g;
+          I += r.i;
+          R += Math.max(r.g - r.i, 0);
+          cap += Math.min(r.i, r.g);
+          cats[r.c] = (cats[r.c] || 0) + r.g;
+        });
+        return { y, G, I, R, done: G ? (cap / G) * 100 : 0, S: R / m, m, cats };
+      }
+
+      function renderAll() {
+        const st = YEARS.map(yearStats).filter(Boolean),
+          missing = YEARS.filter((y) => !cache[y]);
+        const sm = $("summary");
+        sm.replaceChildren();
+        if (!st.length) {
+          sm.textContent = "No year could be loaded.";
+          status("Open a year tab to see the exact error.", true);
+          return;
+        }
+        if (st.length > 1) {
+          const f = st[0],
+            l = st[st.length - 1];
+          sm.append(
+            el("span", "", "Yearly goals go from "),
+            el("b", "", L(f.G)),
+            el("span", "", " in " + f.y + " to "),
+            el("b", "", L(l.G)),
+            el("span", "", " in " + l.y + "."),
+          );
+        } else
+          sm.append(el("span", "", "Only " + st[0].y + " could be loaded."));
+        drawCatBars(
+          st.map((x) => [String(x.y), { g: x.G, i: x.I }]),
+          "yearbars",
+          () => "var(--accent)",
+          "Grey bar is that year's goal. The green bar beside it is what's invested so far.",
+          "Goal and invested by year",
+        );
+
+        const box = $("yearstack");
+        box.replaceChildren();
+        const maxG = Math.max(...st.map((x) => x.G)),
+          catsAll = [...new Set(st.flatMap((x) => Object.keys(x.cats)))];
+        const chips = el("div", "chips");
+        catsAll.forEach((k) => {
+          const c = el("span");
+          c.append(dot(k), document.createTextNode(k));
+          chips.append(c);
+        });
+        box.append(chips);
+        st.forEach((x) => {
+          const line = el("div", "hb"),
+            tr = el("div", "track");
+          let left = 0;
+          catsAll.forEach((k) => {
+            const v = x.cats[k] || 0;
+            if (!v) return;
+            const w = (v / maxG) * 100,
+              b = el("b", "fill");
+            b.style.left = left + "%";
+            b.style.width = Math.max(w - 0.3, 0) + "%";
+            b.style.background = cc(k);
+            b.title = k + ": " + L(v);
+            tr.append(b);
+            left += w;
+          });
+          line.append(
+            el("div", "lab", String(x.y)),
+            tr,
+            el("div", "val", L(x.G) + " goal"),
+          );
+          box.append(line);
+        });
+
+        const t = $("yeartbl");
+        t.replaceChildren();
+        const hr = el("tr");
+        ["Year", "Goal", "Invested", "Funded", "Left", "SIP per month"].forEach(
+          (h) => hr.append(el("th", "", h)),
+        );
+        t.append(hr);
+        st.forEach((x) => {
+          const tr = el("tr"),
+            td = el("td"),
+            a = el("a", "", String(x.y));
+          a.href = "#" + x.y;
+          td.append(a);
+          tr.append(td);
+          [
+            inr(x.G),
+            inr(x.I),
+            x.done.toFixed(0) + "%",
+            x.R > 0 ? inr(x.R) : "–",
+            x.R > 0 ? inr(x.S) : "–",
+          ].forEach((v) => tr.append(el("td", "", v)));
+          t.append(tr);
+        });
+        $("allbody").hidden = false;
+        if (missing.length)
+          status(
+            "Couldn't load: " +
+              missing.join(", ") +
+              ". Open that year's tab to see the exact error.",
+            true,
+          );
+        else status();
+      }
+
+      function buildTabs() {
+        const nav = $("tabs");
+        nav.replaceChildren();
+        YEARS.map(String)
+          .concat("all")
+          .forEach((v) => {
+            const b = el("button", "", v === "all" ? "All years" : v);
+            b.type = "button";
+            b.dataset.v = v;
+            b.setAttribute("role", "tab");
+            b.addEventListener("click", () => {
+              if (location.hash.slice(1) === v) load();
+              else location.hash = v;
+            });
+            nav.append(b);
+          });
+      }
+      buildTabs();
+      window.addEventListener("hashchange", () => {
+        userMonths = null;
+        load();
+      });
+      $("months").addEventListener("change", (e) => {
+        const v = parseInt(e.target.value, 10);
+        userMonths = isNaN(v) || v < 1 ? 1 : v;
+        render();
+      });
+      $("usesheet").addEventListener("click", () => {
+        userMonths = null;
+        render();
+      });
+      $("refresh").addEventListener("click", load);
+      setInterval(() => {
+        if (!document.hidden) load();
+      }, REFRESH_SECONDS * 1000);
+      document.addEventListener("visibilitychange", () => {
+        if (
+          !document.hidden &&
+          stamp &&
+          Date.now() - stamp > REFRESH_SECONDS * 1000
+        )
+          load();
+      });
+      load();
+    </script>
+  </body>
+</html>
