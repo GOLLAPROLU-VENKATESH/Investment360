@@ -7,14 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F2F4F0;--surface:#FBFCFA;--ink:#18231E;--muted:#5C6B63;--line:#D5DBD3;--accent:#0E5A4B;--rail:#DDE3DB;--over:#C0356B;--need:#A4432F;--cat-equity:#2F6FDE;--cat-debt:#7A5AC8;--cat-commodity:#D49A12;--cat-reit:#DE6B33;--cat-bond:#1F9C8C;--cat-emergency-fund:#6F8279;--cat-other:#8A948E}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101714;--surface:#161F1B;--ink:#E7EEE9;--muted:#93A399;--line:#27332D;--accent:#4FC0A4;--rail:#26332D;--over:#F07AA5;--need:#E58A76;--cat-equity:#6C9CFF;--cat-debt:#A98CF0;--cat-commodity:#EDBB3E;--cat-reit:#FF9160;--cat-bond:#4DD0BE;--cat-emergency-fund:#9DB0A6;--cat-other:#A3ADA7}}
-:root[data-theme="dark"]{--bg:#101714;--surface:#161F1B;--ink:#E7EEE9;--muted:#93A399;--line:#27332D;--accent:#4FC0A4;--rail:#26332D;--over:#F07AA5;--need:#E58A76;--cat-equity:#6C9CFF;--cat-debt:#A98CF0;--cat-commodity:#EDBB3E;--cat-reit:#FF9160;--cat-bond:#4DD0BE;--cat-emergency-fund:#9DB0A6;--cat-other:#A3ADA7}
+:root{--bg:#F2F4F0;--surface:#FBFCFA;--ink:#18231E;--muted:#5C6B63;--line:#D5DBD3;--accent:#0E5A4B;--rail:#E3E8E2;--over:#C0356B;--need:#A4432F;--cat-equity:#2563EB;--cat-debt:#7C3AED;--cat-commodity:#B7791F;--cat-reit:#D94F26;--cat-bond:#0F8B7A;--cat-emergency-fund:#567164;--cat-other:#64748B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101714;--surface:#161F1B;--ink:#E7EEE9;--muted:#A2B1A8;--line:#304038;--accent:#55D6B4;--rail:#2B3932;--over:#FF77A8;--need:#FF9B83;--cat-equity:#78A6FF;--cat-debt:#C0A0FF;--cat-commodity:#F4C45E;--cat-reit:#FF9270;--cat-bond:#55D6C3;--cat-emergency-fund:#A7C3B4;--cat-other:#B1BEC7}}
+:root[data-theme="dark"]{--bg:#101714;--surface:#161F1B;--ink:#E7EEE9;--muted:#A2B1A8;--line:#304038;--accent:#55D6B4;--rail:#2B3932;--over:#FF77A8;--need:#FF9B83;--cat-equity:#78A6FF;--cat-debt:#C0A0FF;--cat-commodity:#F4C45E;--cat-reit:#FF9270;--cat-bond:#55D6C3;--cat-emergency-fund:#A7C3B4;--cat-other:#B1BEC7}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
 main{max-width:980px;margin:0 auto;padding:calc(40px + env(safe-area-inset-top,0px)) 20px calc(64px + env(safe-area-inset-bottom,0px))}
 h1{font:700 clamp(1.7rem,4vw,2.4rem)/1.1 "Bricolage Grotesque",Figtree,sans-serif;margin:0 0 6px;letter-spacing:-.02em}
 .sub{color:var(--muted);margin:0 0 6px}
+.source-link{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;font-size:.9rem;font-weight:600;text-decoration:none}
+.source-link:hover{text-decoration:underline}
+.source-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .status{color:var(--muted);font-size:.9rem;margin:0 0 28px}
 .status.bad{color:var(--need)}
 .summary{font:500 clamp(1.25rem,3vw,1.75rem)/1.35 "Bricolage Grotesque",Figtree,sans-serif;margin:0 0 20px;max-width:34em}
@@ -53,39 +56,47 @@ details ul{margin:12px 0 0;padding-left:18px;color:var(--muted)}
 details li{margin-bottom:6px}
 
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
-.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.charts{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.analysis{margin-bottom:16px}
 .panel h3{font:600 1rem/1.2 "Bricolage Grotesque",Figtree,sans-serif;margin:0}
 .ph{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.insights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.insight{min-width:0;padding:12px;background:var(--bg);border-radius:8px}
+.insight .label{display:block;color:var(--muted);font-size:.8rem;margin-bottom:4px}
+.insight b{display:block;overflow-wrap:anywhere;font-size:1rem}
+.insight small{display:block;color:var(--muted);margin-top:4px}
 .seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .seg button{border:0;border-radius:0;padding:4px 12px;font-size:.85rem;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
 .donut{display:block;width:190px;max-width:70%;margin:0 auto 12px}
-.chart{display:block;width:100%;height:auto}
 .legend{list-style:none;margin:0;padding:0;font-size:.9rem}
 .legend li{display:flex;align-items:center;padding:3px 0}
 .legend li em{margin-left:auto;font-style:normal;color:var(--muted)}
 .note{color:var(--muted);font-size:.85rem;margin:12px 0 0}
-.hb{display:grid;grid-template-columns:130px 1fr 170px;gap:12px;align-items:center;padding:6px 0}
-.hb .lab{font-size:.9rem;display:flex;align-items:center}
-.hb .val{text-align:right;font-size:.85rem;color:var(--muted)}
-.track{position:relative;height:16px}
-.track b{position:absolute;top:0;height:100%;border-radius:4px}
-.track .goal{background:var(--rail)}
-.track .ov{background:var(--over)}
+.progress-list{display:grid;gap:16px}
+.progress-row{min-width:0;padding:2px 0}
+.progress-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.progress-name{min-width:0;display:flex;align-items:center;font-size:.92rem;font-weight:600;overflow-wrap:anywhere}
+.progress-pct{flex:none;font-size:.82rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress-pct.over{color:var(--over)}
+.progress-detail{color:var(--muted);font-size:.8rem;margin-top:1px}
+.progress-track{position:relative;height:12px;margin-top:7px;border:1px solid var(--line);border-radius:999px;background-color:var(--rail);background-image:linear-gradient(90deg,transparent 24.6%,var(--line) 25%,transparent 25.4%,transparent 49.6%,var(--line) 50%,transparent 50.4%,transparent 74.6%,var(--line) 75%,transparent 75.4%);overflow:hidden}
+.progress-track::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 2px rgba(0,0,0,.12);pointer-events:none}
+.progress-fill{height:100%;min-width:0;border-radius:inherit;background:var(--accent);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -1px rgba(0,0,0,.12);transition:width .35s ease}
+.progress-fill.over{background:var(--over)}
+.sip-list{display:grid;gap:12px}
+.sip-row{display:grid;grid-template-columns:minmax(100px,1fr) minmax(70px,2fr) auto;gap:12px;align-items:center}
+.sip-name{min-width:0;font-size:.9rem;overflow-wrap:anywhere}
+.sip-track{height:10px;border:1px solid var(--line);border-radius:999px;background:var(--rail);overflow:hidden}
+.sip-fill{height:100%;border-radius:inherit;box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -1px rgba(0,0,0,.12)}
+.sip-value{font-size:.85rem;color:var(--muted);white-space:nowrap}
 .tabs{display:flex;gap:6px;overflow-x:auto;margin:14px 0 12px;padding-bottom:2px}
 .tabs button{border-radius:999px;padding:6px 14px;white-space:nowrap;color:var(--muted)}
 .tabs button[aria-selected="true"]{background:var(--accent);color:var(--surface);border-color:var(--accent)}
 .chips{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 10px;font-size:.9rem}
 .chips span{display:inline-flex;align-items:center}
 a{color:var(--accent)}
-.dbg{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:10px 0 24px;font-size:.85rem}
-.dbg summary{font-weight:500;color:var(--muted);cursor:pointer}
-.dbg table{border-collapse:collapse;width:100%;margin-top:10px;font-size:.8rem}
-.dbg td{border:1px solid var(--line);padding:3px 6px;white-space:nowrap;color:var(--ink)}
-.dbg td.hit{background:var(--accent);color:var(--surface);font-weight:600}
-.dbg .row-i{color:var(--muted);text-align:right}
-.dbg p{color:var(--muted);margin:8px 0 0}
 .foot{color:var(--muted);font-size:.85rem;margin-top:28px}
 @media (max-width:680px){
  main{padding-left:16px;padding-right:16px}
@@ -98,8 +109,9 @@ a{color:var(--accent)}
  .cat th,.cat td{padding:8px 4px;font-size:.9rem}
  .share{display:none}
  .charts{grid-template-columns:1fr}
- .hb{grid-template-columns:1fr auto;row-gap:4px}
- .hb .track{grid-column:1/-1;order:3}
+ .insights{grid-template-columns:1fr}
+ .sip-row{grid-template-columns:minmax(90px,1fr) auto;gap:4px 12px}
+ .sip-track{grid-column:1/-1;grid-row:2}
 }
 </style>
 </head>
@@ -107,14 +119,10 @@ a{color:var(--accent)}
 <main>
 <h1>Investment plan 2026–2030</h1>
 <p class="sub">Read live from your Google Sheet. Change the sheet and this page follows.</p>
+<a class="source-link" href="https://docs.google.com/spreadsheets/d/1ZcGeBVVwDfk6HzAXQbhYYYmKLDvScOfrWdx79lf7FNY/edit" target="_blank" rel="noopener noreferrer">Open source Google Sheet <span aria-hidden="true">↗</span></a>
 
 <nav class="tabs" id="tabs" aria-label="Plan year"></nav>
 <p class="status" id="status" role="status">Loading…</p>
-
-<details id="dbg" class="dbg">
- <summary>Troubleshooting: show what the page received from Google</summary>
- <div id="dbgbody"></div>
-</details>
 
 <p class="summary" id="summary"></p>
 <div class="master" id="master" aria-label="Funded share by category"></div>
@@ -126,16 +134,20 @@ a{color:var(--accent)}
 
 <div id="body" hidden>
  <h2>Where the plan stands</h2>
+ <section class="panel analysis">
+  <div class="ph"><h3>Quick analysis</h3></div>
+  <div class="insights" id="insights" aria-live="polite"></div>
+ </section>
  <div class="charts">
   <section class="panel">
    <div class="ph"><h3>Plan by category</h3><div class="seg" role="group" aria-label="Show goal or invested"><button type="button" data-mode="g" aria-pressed="true">Goal</button><button type="button" data-mode="i" aria-pressed="false">Invested</button></div></div>
    <div id="donut"></div>
   </section>
-  <section class="panel"><div class="ph"><h3>Invested vs goal by category</h3></div><div id="catbars"></div></section>
+  <section class="panel"><div class="ph"><h3>Category progress</h3></div><div id="catbars"></div></section>
  </div>
- <h2>Invested vs goal, by instrument</h2>
+ <h2>Instrument progress</h2>
  <section class="panel"><div id="hbars"></div></section>
- <h2>Monthly SIP needed</h2>
+ <h2>Monthly SIP by instrument</h2>
  <section class="panel"><div id="sipbars"></div></section>
  <h2>Instruments, by priority</h2>
  <div class="grid" id="grid"></div>
@@ -257,44 +269,44 @@ function drawDonut(catList,G,I){
  box.append(ul);
 }
 
-function drawCatBars(catList,id,colorFor,note,aria){
- id=id||"catbars";colorFor=colorFor||cc;
- note=note||"Grey bar is the goal. The coloured bar beside it is what you've invested.";
+function drawProgressRows(id,rows,colorFor,note){
  const box=$(id);box.replaceChildren();
- const W=360,H=230,pl=40,pb=30,pt=10,pr=6,ih=H-pt-pb;
- const max=Math.max(1,...catList.map(([k,c])=>Math.max(c.g,c.i))),top=Math.ceil(max/1e5)*1e5;
- const y=v=>pt+ih-v/top*ih;
- const s=svg("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":aria||"Invested and goal by category"});s.setAttribute("class","chart");
- for(let i=0;i<=4;i++){const v=top*i/4;
-  s.append(svg("line",{x1:pl,x2:W-pr,y1:y(v),y2:y(v),style:"stroke:var(--line)","stroke-width":1}));
-  const t=svg("text",{x:pl-5,y:y(v)+3,"text-anchor":"end","font-size":9,style:"fill:var(--muted)"});t.textContent=L(v);s.append(t)}
- const gw=(W-pl-pr)/catList.length,bw=Math.min(18,gw*.32);
- catList.forEach(([k,c],gi)=>{
-  const x0=pl+gi*gw+gw/2;
-  const goal=svg("rect",{x:x0-bw-1,y:y(c.g),width:bw,height:Math.max(0,pt+ih-y(c.g)),rx:2,style:"fill:var(--rail);stroke:var(--line)"});
-  const gt=svg("title",{});gt.textContent=k+" goal: "+L(c.g);goal.append(gt);
-  const inv=svg("rect",{x:x0+1,y:y(c.i),width:bw,height:Math.max(0,pt+ih-y(c.i)),rx:2,style:"fill:"+colorFor(k)});
-  const it=svg("title",{});it.textContent=k+" invested: "+L(c.i);inv.append(it);
-  const lb=svg("text",{x:x0,y:H-pb+15,"text-anchor":"middle","font-size":10,style:"fill:var(--muted)"});lb.textContent=k.split(" ")[0];
-  s.append(goal,inv,lb);
+ const list=el("div","progress-list");
+ rows.forEach(r=>{
+  const pct=r.g?Math.round(r.i/r.g*100):0,over=r.i>r.g,complete=r.i>=r.g;
+  const row=el("div","progress-row"),head=el("div","progress-head");
+  const name=el("span","progress-name");if(r.c)name.append(dot(r.c));name.append(document.createTextNode(r.name));
+  const percentage=el("span","progress-pct"+(over?" over":""),over?pct+"% · over goal":complete?"100% · goal reached":pct+"% funded");
+  if(!over&&!complete)percentage.style.color=colorFor(r);
+  head.append(name,percentage);
+  const detail=over
+   ?L(r.i)+" invested of "+L(r.g)+" · "+L(r.i-r.g)+" over goal"
+   :L(r.i)+" invested of "+L(r.g)+" · "+L(Math.max(r.g-r.i,0))+" left";
+  const track=el("div","progress-track"),fill=el("div","progress-fill"+(over?" over":""));
+  const funded=Math.min(Math.max(r.g?r.i/r.g*100:0,0),100);
+  fill.style.width=funded+"%";
+  if(!over)fill.style.background=colorFor(r);
+  track.setAttribute("role","meter");track.setAttribute("aria-label",r.name+" goal progress");
+  track.setAttribute("aria-valuemin","0");track.setAttribute("aria-valuemax","100");
+  track.setAttribute("aria-valuenow",String(Math.round(funded)));
+  track.setAttribute("aria-valuetext",over?pct+"% funded, "+L(r.i-r.g)+" over goal":pct+"% funded, "+L(Math.max(r.g-r.i,0))+" remaining");
+  track.append(fill);row.append(head,el("div","progress-detail",detail),track);list.append(row);
  });
- box.append(s,el("p","note",note));
+ box.append(list);
+ if(note)box.append(el("p","note",note));
+}
+
+function drawCatBars(catList,id,colorFor,note){
+ id=id||"catbars";colorFor=colorFor||cc;
+ const rows=catList.map(([name,c])=>({name,g:c.g,i:c.i,c:name}));
+ rows.sort((a,b)=>Math.max(b.g-b.i,0)-Math.max(a.g-a.i,0));
+ drawProgressRows(id,rows,r=>colorFor(r.c),note||"Bars show progress against each goal; pink indicates an amount over goal. Rows with the largest remaining amount come first.");
 }
 
 function drawHBars(rows){
- const box=$("hbars");box.replaceChildren();
- const scale=Math.max(1,...rows.map(r=>Math.max(r.g,r.i)));
- rows.forEach(r=>{
-  const line=el("div","hb"),lab=el("div","lab");lab.append(dot(r.c),document.createTextNode(r.n));
-  const tr=el("div","track"),seg=(cls,left,w,bg)=>{const b=el("b",cls);b.style.left=left+"%";b.style.width=w+"%";if(bg)b.style.background=bg;tr.append(b)};
-  const gp=r.g/scale*100;
-  seg("goal",0,gp);seg("fill",0,Math.min(r.i,r.g)/scale*100,cc(r.c));
-  if(r.over>0)seg("ov",gp,r.over/scale*100);
-  const pct=Math.round(r.i/r.g*100);
-  const val=el("div","val",pct+"% · "+L(r.i)+" of "+L(r.g));
-  line.append(lab,tr,val);box.append(line);
- });
- box.append(el("p","note","Grey is the goal, colour is invested, pink is invested beyond the goal."));
+ const ranked=[...rows].sort((a,b)=>b.rem-a.rem);
+ drawProgressRows("hbars",ranked.map(r=>({name:r.n,g:r.g,i:r.i,c:r.c})),r=>cc(r.c),
+  "Each bar shows progress against that instrument's own goal; pink indicates an amount over goal. The largest remaining amounts come first.");
 }
 
 function drawSip(rows){
@@ -302,34 +314,38 @@ function drawSip(rows){
  const list=rows.filter(r=>r.rem>0).sort((a,b)=>b.sip-a.sip);
  if(!list.length){box.append(el("p","note","Nothing left to invest."));return}
  const max=list[0].sip;
+ const chart=el("div","sip-list");
  list.forEach(r=>{
-  const line=el("div","hb"),lab=el("div","lab");lab.append(dot(r.c),document.createTextNode(r.n));
-  const tr=el("div","track"),b=el("b","fill");b.style.left="0";b.style.width=(r.sip/max*100)+"%";b.style.background=cc(r.c);tr.append(b);
-  line.append(lab,tr,el("div","val","₹"+inr(r.sip)+" a month"));box.append(line);
+  const line=el("div","sip-row"),lab=el("div","sip-name");lab.append(dot(r.c),document.createTextNode(r.n));
+  const tr=el("div","sip-track"),fill=el("div","sip-fill");fill.style.width=(r.sip/max*100)+"%";fill.style.background=cc(r.c);
+  tr.setAttribute("role","img");tr.setAttribute("aria-label",r.n+": "+L(r.sip)+" monthly SIP");tr.append(fill);
+  line.append(lab,tr,el("div","sip-value",L(r.sip)+" / month"));chart.append(line);
  });
+ box.append(chart,el("p","note","Bars compare monthly SIP amounts; the longest bar is the highest contribution."));
 }
 
-function renderDebug(y){
- const box=$("dbgbody"),info=lastRaw[y];box.replaceChildren();
- if(!info){box.append(el("p","","Nothing fetched yet for this tab."));return}
- box.append(el("p","","Source that answered: "+info.label+". Total rows received: "+info.raw.length+"."));
- const hits=[];
- info.raw.forEach((r,ri)=>r.forEach((c,ci)=>{if(/month/i.test(String(c||"")))hits.push([ri,ci,c])}));
- box.append(el("p","",hits.length?'Cells containing the word "month":':"No cell in this tab contains the word \"month\" at all -- the label may be phrased differently, or this source isn't returning that row."));
- if(hits.length){
-  const t=el("table");
-  hits.forEach(([ri,ci,c])=>{const tr=el("tr");
-   tr.append(el("td","row-i","row "+(ri+1)),el("td","row-i","col "+(ci+1)));
-   const near=info.raw[ri].slice(ci,ci+4).map(x=>String(x==null?"":x));
-   near.forEach((x,i)=>tr.append(el("td",i===0?"hit":"",x||"(empty)")));
-   t.append(tr)});
-  box.append(t);
- }
+function drawInsights(rows,remaining,monthlySip,months){
+ const box=$("insights");box.replaceChildren();
+ const card=el("div","insight");
+ card.append(el("span","label","Left to reach yearly goals"));
+ card.append(el("b","",L(remaining)));
+ card.append(el("small","",remaining>0?"Still needed across all instruments.":"All yearly goals have been reached."));
+ box.append(card);
+ const sipCard=el("div","insight");
+ sipCard.append(el("span","label","Total monthly SIP"));
+ sipCard.append(el("b","",L(monthlySip)+"/mo"));
+ sipCard.append(el("small","",monthlySip>0?"Across all instruments over "+months+" month"+(months===1?"":"s")+".":"No monthly investment needed; all goals are met."));
+ box.append(sipCard);
+ const achieved=rows.filter(r=>r.i>=r.g).length;
+ const goalsCard=el("div","insight");
+ goalsCard.append(el("span","label","Instrument goals achieved"));
+ goalsCard.append(el("b","",achieved+" of "+rows.length));
+ goalsCard.append(el("small","",rows.length?Math.round(achieved/rows.length*100)+"% of instrument goals reached.":"No instrument goals found."));
+ box.append(goalsCard);
 }
 
 function render(){
  if(!data)return;
- renderDebug(view());
  const sheetM=Math.max(1,data.months|0),m=userMonths!==null?userMonths:sheetM;
  const rows=data.items.map(d=>({...d,rem:Math.max(d.g-d.i,0),over:Math.max(d.i-d.g,0),sip:Math.max(d.g-d.i,0)/m}));
  const G=rows.reduce((a,r)=>a+r.g,0),I=rows.reduce((a,r)=>a+r.i,0),R=rows.reduce((a,r)=>a+r.rem,0);
@@ -349,7 +365,7 @@ function render(){
  $("months").value=m;$("mnote").textContent=data.assumed?"(not found in this tab, assumed)":"";$("usesheet").hidden=userMonths===null||userMonths===sheetM;
  $("ctl").hidden=false;$("body").hidden=false;
 
- drawDonut(catList,G,I);drawCatBars(catList);drawHBars(sorted);drawSip(rows);
+ drawInsights(rows,R,S,m);drawDonut(catList,G,I);drawCatBars(catList);drawHBars(sorted);drawSip(rows);
 
  const g=$("grid");g.replaceChildren();
  const h=el("div","head");h.append(el("span","","Instrument"));
@@ -411,13 +427,11 @@ let seq=0,chain=Promise.resolve();
 const cache={};
 const view=()=>{const h=location.hash.slice(1);return h==="all"||YEARS.map(String).includes(h)?h:String(YEARS[0])};
 
-const lastRaw={};
 async function fetchYear(y){
  const errs=[];
  for(const [label,fn] of sourcesFor(y)){
   try{
    const raw=await fn();
-   lastRaw[y]={label,raw};
    return{data:parseSheet(raw),src:label};
   }
   catch(e){errs.push(label+" ("+e.message+")")}
@@ -446,7 +460,7 @@ async function doLoad(){
  }catch(e){
   if(my!==seq)return;
   if(cache[v]){data=cache[v].data;src=cache[v].src;stamp=cache[v].stamp;failed=true;showView(v);render()}
-  else{$("summary").textContent="The "+v+" tab couldn't be loaded.";$("master").replaceChildren();renderDebug(v);status(failMsg(v,e.message),true)}
+  else{$("summary").textContent="The "+v+" tab couldn't be loaded.";$("master").replaceChildren();status(failMsg(v,e.message),true)}
  }
 }
 
@@ -475,7 +489,7 @@ function renderAll(){
   const f=st[0],l=st[st.length-1];
   sm.append(el("span","","Yearly goals go from "),el("b","",L(f.G)),el("span",""," in "+f.y+" to "),el("b","",L(l.G)),el("span",""," in "+l.y+"."));
  }else sm.append(el("span","","Only "+st[0].y+" could be loaded."));
- drawCatBars(st.map(x=>[String(x.y),{g:x.G,i:x.I}]),"yearbars",()=>"var(--accent)","Grey bar is that year's goal. The green bar beside it is what's invested so far.","Goal and invested by year");
+ drawCatBars(st.map(x=>[String(x.y),{g:x.G,i:x.I}]),"yearbars",()=>"var(--accent)","Each bar shows the share of that year's goal invested; remaining amounts are listed alongside.");
 
  const box=$("yearstack");box.replaceChildren();
  const maxG=Math.max(...st.map(x=>x.G)),catsAll=[...new Set(st.flatMap(x=>Object.keys(x.cats)))];
